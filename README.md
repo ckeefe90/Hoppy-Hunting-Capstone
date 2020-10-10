@@ -1,2 +1,2 @@
-# Hoppy Hunting Capstone
+# Hoppy Hunting Client
  A brewery searching app
