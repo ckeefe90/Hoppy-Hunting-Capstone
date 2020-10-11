@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Hoppy Hunting</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <nav role="navigation">Nav</nav>
+    <main role="main">
+        <header role="banner">
+            <h1>Let's get started!</h1>
+            <h2>Make a few selections to narrow down some breweries</h2>
+        </header>
+        <section>
+            <header>
+                <h3>Search by</h3>
+            </header>
+            <div>
+                <label for="zip-code">Zip Code</label>
+                <input placeholder='01851' type="text" name='zip-code' id='zip-code' />
+            </div>
+            <div>
+                <label for="radius">Radius</label>
+                <input type="select" name='radius' id='radius' placeholder='20 miles' />
+            </div>
+            <div>
+                <label for="category">Category</label>
+                <input type="select" name='radius' id='radius' placeholder='stout' />
+            </div>
+            <button type='submit'>Show me the hops</button>
+        </section>
+        <section>
+            <header>
+                <h3>Search Results</h3>
+            </header>
+            <p>[<em>placeholder for brewery name</em>]</p>
+            <p>[<em>placeholder for location</em>]</p>
+            <p>[<em>placeholder for directions link</em>]</p>
+            <p>[<em>placeholder to save</em>]</p>
+        </section>
+        <footer role="content-info">Footer</footer>
+</body>
+
+</html>
