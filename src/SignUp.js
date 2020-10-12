@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class SignUp extends Component {
     handleSubmit = e => {
@@ -25,14 +26,14 @@ export default class SignUp extends Component {
                     </div>
                     <div>
                         <label htmlFor='password'>Password</label>
-                        <input name='password' id='password' required />
+                        <input name='password' id='password' type='password' required />
                     </div>
                     <div>
                         <label htmlFor='confirmPassword'>Confirm Password</label>
-                        <input name='confirmPassword' id='confirmPassword' required />
+                        <input name='confirmPassword' id='confirmPassword' type='password' required />
                     </div>
                     <button type='submit'>Sign-up!</button>
-                    <p>Already have an account?</p>
+                    <p>Already have an account? <Link to='/SignIn'>Sign in</Link></p>
                 </form>
             </div>
         </>)

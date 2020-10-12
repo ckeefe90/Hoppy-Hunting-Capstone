@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
+import React from 'react';
 
-export default class Footer extends Component {
-    render() {
-        return (
+export default function Footer(props) {
+    return (
+        <footer>
             <p>Caitlin Keefe | 2020</p>
-        )
-    }
+        </footer>
+    )
 }
