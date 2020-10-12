@@ -64,7 +64,8 @@ class App extends Component {
   render() {
     const userContextValue = {
       user: this.state.user,
-      setUser: (user, cb) => this.setState({ user }, cb)
+      setUser: (user, cb) => this.setState({ user }, cb),
+      addUser: (user, cb) => this.setState({ user }, cb)
     }
     const breweryContextValue = {
       breweries: this.state.breweries,
