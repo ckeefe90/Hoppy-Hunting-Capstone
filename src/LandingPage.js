@@ -5,7 +5,7 @@ export default function LandingPage(props) {
         <div className='landingPage'>
             {/* <section>
                 <div className='descBox'>
-                    <h3>Search for breweries</h3>
+                    <h3>Searching for breweries</h3>
                 </div>
                 <p>[<em>placeholder for screenshot of brewery</em>]</p>
                 <p>Sick of going to the same places? Want to try something new? Let us help you find the right brewery based off some search criteria you select. You can search by zip code or the type of beer that you're looking for.</p>

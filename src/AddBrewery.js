@@ -9,7 +9,11 @@ export default function AddBrewery(props) {
     function handleSubmit(e) {
         e.preventDefault()
         const { breweryName, breweryAddress, comments } = e.target
-        const newBrewery = { name: breweryName.value, address: breweryAddress.value, comments: comments.value }
+        const newBrewery = {
+            name: breweryName.value,
+            address: breweryAddress.value,
+            comments: comments.value
+        }
         breweryContext.addBrewery(newBrewery, () => history.push('/MyBreweries'))
     }
 
