@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
-import Header from './Header';
-import Footer from './Footer';
 import HoppyError from './HoppyError';
 import AppSwitch from './AppSwitch';
 // import config from './config';
-import BreweryContext from './BreweryContext';
+import BreweryContext from './BreweryContext/BreweryContext';
+import Header from './Header/Header';
+import Footer from './Footer';
 import UserContext from './UserContext';
 
 
@@ -76,17 +76,17 @@ class App extends Component {
 
     return (
       <div className="App">
-        <UserContext.Provider value={userContextValue}>
-          <Header />
-          <main>
-            <BreweryContext.Provider value={breweryContextValue}>
-              <HoppyError>
+        <HoppyError>
+          <UserContext.Provider value={userContextValue}>
+            <Header />
+            <main>
+              <BreweryContext.Provider value={breweryContextValue}>
                 <AppSwitch />
-              </HoppyError>
-            </BreweryContext.Provider>
-          </main>
-          <Footer />
-        </UserContext.Provider>
+              </BreweryContext.Provider>
+            </main>
+            <Footer />
+          </UserContext.Provider>
+        </HoppyError>
       </div>
     )
   }

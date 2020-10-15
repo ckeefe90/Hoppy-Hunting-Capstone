@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import BreweryContext from './BreweryContext';
+import BreweryContext from '../BreweryContext/BreweryContext';
 
 export default function AddBrewery(props) {
     const breweryContext = useContext(BreweryContext)
