@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { v4 as uuid } from 'uuid';
 import HoppyError from './HoppyError';
 import AppSwitch from './AppSwitch';
-// import config from './config';
+import config from './config';
 import BreweryContext from './BreweryContext/BreweryContext';
 import Header from './Header/Header';
 import Footer from './Footer';
@@ -23,10 +22,87 @@ class App extends Component {
     })
   }
 
+  login = (user, cb) => {
+    if (!user) {
+      this.setState({ user }, cb)
+    }
+    else
+      return fetch(config.API_ENDPOINT + "/login", {
+        method: "POST",
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(user)
+      })
+        .then(res => {
+          if (res.ok) {
+            this.setState({ user }, () => this.getBreweries().then(cb))
+          } else
+            throw new Error('Username or password does not match')
+        })
+  }
+
+  signup = (user, cb) => {
+    return fetch(config.API_ENDPOINT + "/signup", {
+      method: "post",
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(user)
+    })
+      .then(res => {
+        if (res.ok) {
+          this.setState({ user }, cb)
+        } else
+          throw new Error('Unable to create new account')
+      })
+  }
+
+  getBreweries = () => {
+    return fetch(config.API_ENDPOINT + "/breweries", {
+      method: "GET",
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Basic ${btoa(this.state.user.email + ':' + this.state.user.password)}`
+      },
+    })
+      .then(async res => {
+        if (res.ok) {
+          return res.json()
+        } else {
+          const json = await res.json()
+          throw new Error(json.error.message)
+        }
+      })
+      .then(breweries => {
+        this.setState({
+          breweries,
+        })
+      })
+  }
+
   addBrewery = (brewery, cb) => {
-    this.setState({
-      breweries: [...this.state.breweries, { ...brewery, id: uuid() }],
-    }, cb)
+    return fetch(config.API_ENDPOINT + "/breweries", {
+      method: "POST",
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Basic ${btoa(this.state.user.email + ':' + this.state.user.password)}`
+      },
+      body: JSON.stringify(brewery)
+    })
+      .then(async res => {
+        if (res.ok) {
+          return res.json()
+        } else {
+          const json = await res.json()
+          throw new Error(json.error.message)
+        }
+      })
+      .then(newBrewery => {
+        this.setState({
+          breweries: [...this.state.breweries, newBrewery],
+        }, cb)
+      })
   }
 
   updateBrewery = updatedBrewery => {
@@ -37,35 +113,39 @@ class App extends Component {
   }
 
   deleteBrewery = breweryId => {
-    const newBreweries = this.state.breweries.filter(b =>
-      b.id !== breweryId
-    )
-    this.setState({ breweries: newBreweries })
+    return fetch(`${config.API_ENDPOINT}/breweries/${breweryId}`, {
+      method: "DELETE",
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Basic ${btoa(this.state.user.email + ':' + this.state.user.password)}`
+      },
+    })
+      .then(async res => {
+        if (res.ok) {
+          return res
+        } else {
+          const json = await res.json()
+          throw new Error(json.error.message)
+        }
+      })
+      .then(() => {
+        const newBreweries = this.state.breweries.filter(b =>
+          b.id !== breweryId
+        )
+        this.setState({ breweries: newBreweries })
+      })
   }
 
   componentDidMount() {
-    // fetch(config.API_ENDPOINT, {
-    //   method: 'GET',
-    //   headers: {
-    //     'content-type': 'application/json',
-    //     'Authorization': `Bearer ${config.API_KEY}`
-    //   }
-    // })
-    //   .then(res => {
-    //     if (!res.ok) {
-    //       throw new Error(res.status)
-    //     }
-    //     return res.json()
-    //   })
-    //   .then(this.setBreweries)
-    //   .catch(error => this.setState({ error }))
+    if (this.state.user)
+      this.getBreweries()
   }
 
   render() {
     const userContextValue = {
       user: this.state.user,
-      setUser: (user, cb) => this.setState({ user }, cb),
-      addUser: (user, cb) => this.setState({ user }, cb)
+      setUser: this.login,
+      addUser: this.signup
     }
     const breweryContextValue = {
       breweries: this.state.breweries,

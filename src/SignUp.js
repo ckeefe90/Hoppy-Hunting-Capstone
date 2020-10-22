@@ -1,26 +1,29 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import UserContext from './UserContext';
 
 export default function SignUp() {
     const userContext = useContext(UserContext)
     const history = useHistory()
+    const [error, setError] = useState()
 
     function handleSubmit(e) {
         e.preventDefault()
-        const { fullName, email, password, confirmPassword } = e.target
-        const user = { name: fullName.value, email: email.value, password: password.value, confirmPassword: confirmPassword.value }
+        const { email, password, confirmPassword } = e.target
+        if (password.value !== confirmPassword.value) {
+            setError(new Error('Passwords do not match'))
+            return
+        }
+        const user = { email: email.value, password: password.value }
         userContext.addUser(user, () => history.push('/MyBreweries'))
+            .catch(setError)
     }
     return (<>
         <div className='SignUp__form'>
             <form onSubmit={handleSubmit}>
                 <div>
                     <h2>Become a Hoppy Hunter!</h2>
-                </div>
-                <div>
-                    <label htmlFor='fullName'>Full Name</label>
-                    <input name='fullName' id='fullName' required />
+                    {error && <h3>{error.message}</h3>}
                 </div>
                 <div>
                     <label htmlFor='email'>Email</label>

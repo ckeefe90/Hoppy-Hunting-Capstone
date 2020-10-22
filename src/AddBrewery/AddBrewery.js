@@ -33,7 +33,7 @@ export default function AddBrewery(props) {
                 </div>
                 <div>
                     <label htmlFor='comments'>Comments</label>
-                    <input name='comments' id='comments' />
+                    <input name='comments' id='comments' required />
                 </div>
                 <button type='submit'>Add Brewery!</button>
             </form>

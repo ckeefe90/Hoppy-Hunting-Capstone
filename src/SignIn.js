@@ -1,16 +1,19 @@
 import React, { useContext } from 'react';
+import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import UserContext from './UserContext';
 
 export default function SignIn(props) {
     const userContext = useContext(UserContext)
     const history = useHistory()
+    const [error, setError] = useState()
 
     function handleSubmit(e) {
         e.preventDefault()
         const { email, password } = e.target
         const user = { email: email.value, password: password.value }
         userContext.setUser(user, () => history.push('/MyBreweries'))
+            .catch(setError)
     }
 
     return (<>
@@ -18,6 +21,7 @@ export default function SignIn(props) {
             <form onSubmit={handleSubmit}>
                 <div>
                     <h2>Please sign in:</h2>
+                    {error && <h3>{error.message}</h3>}
                 </div>
                 <div>
                     <label htmlFor='email'>Email</label>
