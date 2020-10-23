@@ -23,7 +23,6 @@ export default function Header(props) {
                     <button type='button' onClick={() => history.push("/SignIn")}>Sign In</button>
                 </>}
             </nav>
-            <h2>Save &amp; rate breweries!</h2>
         </header>
     )
 }

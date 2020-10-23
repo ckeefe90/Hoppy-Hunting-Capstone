@@ -105,11 +105,29 @@ class App extends Component {
       })
   }
 
-  updateBrewery = updatedBrewery => {
-    this.setState({
-      breweries: this.state.breweries.map(b =>
-        (b.id !== updatedBrewery.id) ? b : updatedBrewery)
+  updateBrewery = (id, updatedBrewery) => {
+    return fetch(`${config.API_ENDPOINT}/breweries/${id}`, {
+      method: "PATCH",
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Basic ${btoa(this.state.user.email + ':' + this.state.user.password)}`
+      },
+      body: JSON.stringify(updatedBrewery)
     })
+      .then(async res => {
+        if (res.ok) {
+          return res
+        } else {
+          const json = await res.json()
+          throw new Error(json.error.message)
+        }
+      })
+      .then(() => {
+        this.setState({
+          breweries: this.state.breweries.map(b =>
+            (b.id !== updatedBrewery.id) ? b : updatedBrewery)
+        })
+      })
   }
 
   deleteBrewery = breweryId => {
