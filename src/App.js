@@ -40,15 +40,19 @@ class App extends Component {
       })
         .then(res => {
           if (res.ok) {
-            this.setState({ user }, () => this.getBreweries().then(cb))
+            return res.json()
           } else
             throw new Error('Username or password does not match')
+        })
+        .then(token => {
+          localStorage.setItem('user', token)
+          this.setState({ user: token }, () => this.getBreweries().then(cb))
         })
   }
 
   signup = (user, cb) => {
     return fetch(config.API_ENDPOINT + "/signup", {
-      method: "post",
+      method: "POST",
       headers: {
         'content-type': 'application/json',
       },
@@ -67,12 +71,15 @@ class App extends Component {
       method: "GET",
       headers: {
         'content-type': 'application/json',
-        'Authorization': `Basic ${btoa(this.state.user.email + ':' + this.state.user.password)}`
+        'Authorization': `Bearer ${this.state.user}`
       },
     })
       .then(async res => {
         if (res.ok) {
           return res.json()
+        } else if (res.status === 401) {
+          localStorage.removeItem('user')
+          throw new Error('Unauthorized')
         } else {
           const json = await res.json()
           throw new Error(json.error.message)
@@ -90,7 +97,7 @@ class App extends Component {
       method: "POST",
       headers: {
         'content-type': 'application/json',
-        'Authorization': `Basic ${btoa(this.state.user.email + ':' + this.state.user.password)}`
+        'Authorization': `Bearer ${this.state.user}`
       },
       body: JSON.stringify(brewery)
     })
@@ -114,7 +121,7 @@ class App extends Component {
       method: "PATCH",
       headers: {
         'content-type': 'application/json',
-        'Authorization': `Basic ${btoa(this.state.user.email + ':' + this.state.user.password)}`
+        'Authorization': `Bearer ${this.state.user}`
       },
       body: JSON.stringify(updatedBrewery)
     })
@@ -139,7 +146,7 @@ class App extends Component {
       method: "DELETE",
       headers: {
         'content-type': 'application/json',
-        'Authorization': `Basic ${btoa(this.state.user.email + ':' + this.state.user.password)}`
+        'Authorization': `Bearer ${this.state.user}`
       },
     })
       .then(async res => {
@@ -159,8 +166,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    if (this.state.user)
-      this.getBreweries()
+    const user = localStorage.getItem('user')
+    if (user) {
+      this.setState({ user }, this.getBreweries)
+    }
   }
 
   render() {

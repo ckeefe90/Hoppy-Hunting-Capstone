@@ -14,8 +14,8 @@ export default function Brewery(props) {
             <h4>{props.name}</h4>
             <p>{props.address}</p>
             <h6>comments</h6>
-            <p><textarea defaultValue={comments} onChange={e => setComments(e.target.value)} /></p>
-            <p>Rate the brewery: <Rating value={rating} onChange={setRating} /></p>
+            <textarea defaultValue={comments} onChange={e => setComments(e.target.value)} />
+            <div>Rate the brewery: <Rating value={rating} onChange={setRating} /></div>
             <button type='button' onClick={() => updateBrewery(props.id, { comments, rating })}>Save Changes</button>
             <button type='button' onClick={() => props.delete(props.id)}>Delete Brewery</button>
         </div>

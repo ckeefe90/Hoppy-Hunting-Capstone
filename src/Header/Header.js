@@ -7,6 +7,7 @@ export default function Header(props) {
     const history = useHistory()
 
     function handleLogOut() {
+        localStorage.removeItem('user')
         userContext.setUser(null, () => history.push('/'))
     }
 
