@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import HoppyError from './HoppyError';
-import AppSwitch from './AppSwitch';
 import config from './config';
 import BreweryContext from './BreweryContext/BreweryContext';
 import Header from './Header/Header';
 import Footer from './Footer';
 import UserContext from './UserContext';
+import LandingPage from './LandingPage/LandingPage';
+import SignUp from './SignUp';
+import SignIn from './SignIn';
+import AddBrewery from './AddBrewery/AddBrewery';
+import MyBreweries from './MyBreweries/MyBreweries';
 
 
 class App extends Component {
@@ -179,7 +183,13 @@ class App extends Component {
             <Header />
             <main>
               <BreweryContext.Provider value={breweryContextValue}>
-                <AppSwitch />
+                <Switch>
+                  <Route exact path='/' render={props => <LandingPage />} />
+                  <Route path='/SignUp' render={props => <SignUp />} />
+                  <Route path='/SignIn' render={props => <SignIn />} />
+                  <Route path='/AddBrewery' render={props => <AddBrewery />} />
+                  <Route path='/MyBreweries' render={props => <MyBreweries />} />
+                </Switch>
               </BreweryContext.Provider>
             </main>
             <Footer />

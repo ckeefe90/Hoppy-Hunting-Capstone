@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import UserContext from './UserContext';
+import brewery from './Images/brewery.jpg'
 
 export default function SignUp() {
     const userContext = useContext(UserContext)
@@ -22,6 +23,7 @@ export default function SignUp() {
         <div className='SignUp__form'>
             <form onSubmit={handleSubmit}>
                 <div>
+
                     <h2>Become a Hoppy Hunter!</h2>
                     {error && <h3>{error.message}</h3>}
                 </div>
@@ -40,6 +42,7 @@ export default function SignUp() {
                 <button type='submit'>Sign-up!</button>
                 <p>Already have an account? <Link to='/SignIn'>Sign in</Link></p>
             </form>
+            <img width='30%' src={brewery} alt='brewery' />
         </div>
     </>)
 }

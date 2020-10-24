@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import UserContext from './UserContext';
+import beerTastingFlight from './Images/beer-tasting-flight.jpg'
 
 export default function SignIn(props) {
     const userContext = useContext(UserContext)
@@ -34,6 +35,7 @@ export default function SignIn(props) {
                 <button type='submit'>Login</button>
                 <p>Don't have an account? <Link to='/SignUp'>Sign up</Link></p>
             </form>
+            <img width='30%' src={beerTastingFlight} alt='beer tasting flight' />
         </div>
     </>)
 }
