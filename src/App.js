@@ -51,6 +51,7 @@ class App extends Component {
   }
 
   signup = (user, cb) => {
+    console.log('config.API_ENDPOINT', config.API_ENDPOINT)
     return fetch(config.API_ENDPOINT + "/signup", {
       method: "POST",
       headers: {
