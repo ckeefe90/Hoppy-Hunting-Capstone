@@ -14,7 +14,7 @@ export default function MyBreweries() {
 
     return (
         <div className='myBreweries'>
-            <img width='50%' src={iLoveBeer} alt='I love beer' />
+            <img width='30%' src={iLoveBeer} alt='I love beer' />
             <h2>My Brewtiful List</h2>
             <ul>
                 {breweryContext.breweries.map(brewery =>
