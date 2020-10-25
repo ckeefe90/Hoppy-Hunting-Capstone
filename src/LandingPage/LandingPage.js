@@ -2,11 +2,11 @@ import React from 'react';
 import flight from '../Images/flight.jpg'
 import topViewFlight from '../Images/top-view-flight.jpg'
 import beerTaps from '../Images/beer-taps.jpg'
-import beer from '../Images/beer.png'
+import beerMug from '../Images/beer-mug.png'
 
 export default function LandingPage(props) {
     return (
-        <div className='landingPage'>
+        <>
             {/* <section>
                 <div className='descBox'>
                     <h3>Searching for breweries</h3>
@@ -34,10 +34,9 @@ export default function LandingPage(props) {
             <section>
                 <img width='50%' src={topViewFlight} alt='top view flight' />
                 <div className='welcomeBox'>
-                    <h3><img width='5%' src={beer} alt='beer' />Let's start hunting </h3>
+                    <h3><img width='3%' src={beerMug} alt='beer mug' />Let's start hunting </h3>
                 </div>
-                <div>Beer icon made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
             </section>
-        </div>
+        </>
     )
 }

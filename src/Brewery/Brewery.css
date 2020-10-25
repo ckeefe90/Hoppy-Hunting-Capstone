@@ -1,0 +1,39 @@
+.brewery {
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 6px;
+}
+
+.brewery h3 {
+    margin: 0;
+}
+
+.brewery p {
+    margin: 0.5rem 0;
+}
+
+.brewery label {
+    text-align: left;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.brewery .comments label {
+    display: block;
+}
+
+.brewery .comments textarea {
+    width: 100%;
+    font-size: 0.875rem;
+    min-height: 3rem;
+}
+
+.brewery .rating {
+    text-align: left;
+    margin-bottom: 0.5rem;
+}
+
+.brewery .actions {
+    display: flex;
+    gap: 0.5rem;
+}

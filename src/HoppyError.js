@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { brokenBeer } from './Images/broken-beer.jpg'
 
 export default class HoppyError extends Component {
     constructor(props) {
@@ -12,7 +13,10 @@ export default class HoppyError extends Component {
 
     render() {
         if (this.state.hasError) {
-            return <h2>Could not display this.</h2>
+            return <>
+                <h2>Uh, oh. Something went wrong.</h2>
+                <img width='30%' src={brokenBeer} alt='broken beer' />
+            </>
         }
         return this.props.children;
     }

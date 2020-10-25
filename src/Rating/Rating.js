@@ -1,18 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Rating.css';
 
 export default function Rating(props) {
     const stars = [0, 0, 0, 0, 0].map((_, i) =>
         (i < props.value)
             //filled in star
-            ? <span key={i} onClick={() => props.onChange((i + 1).toString())}>&#9733; </span>
+            ? <span key={i} onClick={() => props.onChange((i + 1).toString())} className='star'>&#9733; </span>
             //empty star
-            : <span key={i} onClick={() => props.onChange((i + 1).toString())}>&#9734; </span>
+            : <span key={i} onClick={() => props.onChange((i + 1).toString())} className='star'>&#9734; </span>
     );
     return (
-        <div className="rating">
+        <span className="starRating">
             {stars}
-        </div>
+        </span>
     );
 }
 

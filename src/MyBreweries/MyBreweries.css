@@ -1,0 +1,13 @@
+.iLoveBeer {
+    width: 50%;
+}
+
+#myBreweries {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+#addBrewery {
+    margin: 1rem 0;
+}

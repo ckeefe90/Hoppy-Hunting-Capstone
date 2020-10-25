@@ -1,0 +1,13 @@
+.addBrewery label {
+    display: block;
+    font-weight: 500;
+}
+
+.addBrewery input,
+.addBrewery textarea {
+    width: 100%;
+}
+
+.addBrewery textarea {
+    height: 3rem;
+}

@@ -197,25 +197,23 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
-        <HoppyError>
-          <UserContext.Provider value={userContextValue}>
-            <Header />
-            <main>
-              <BreweryContext.Provider value={breweryContextValue}>
-                <Switch>
-                  <Route exact path='/' render={props => <LandingPage />} />
-                  <Route path='/SignUp' render={props => <SignUp />} />
-                  <Route path='/SignIn' render={props => <SignIn />} />
-                  <Route path='/AddBrewery' render={props => <AddBrewery />} />
-                  <Route path='/MyBreweries' render={props => <MyBreweries />} />
-                </Switch>
-              </BreweryContext.Provider>
-            </main>
-            <Footer />
-          </UserContext.Provider>
-        </HoppyError>
-      </div>
+      <HoppyError>
+        <UserContext.Provider value={userContextValue}>
+          <Header />
+          <main>
+            <BreweryContext.Provider value={breweryContextValue}>
+              <Switch>
+                <Route exact path='/' render={props => <LandingPage />} />
+                <Route path='/SignUp' render={props => <SignUp />} />
+                <Route path='/SignIn' render={props => <SignIn />} />
+                <Route path='/AddBrewery' render={props => <AddBrewery />} />
+                <Route path='/MyBreweries' render={props => <MyBreweries />} />
+              </Switch>
+            </BreweryContext.Provider>
+          </main>
+          <Footer />
+        </UserContext.Provider>
+      </HoppyError>
     )
   }
 }

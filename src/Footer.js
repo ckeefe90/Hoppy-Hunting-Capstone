@@ -1,9 +1,10 @@
 import React from 'react';
+import { FaGithub } from 'react-icons/fa'
 
 export default function Footer(props) {
     return (
         <footer>
-            <p>Caitlin Keefe | 2020</p>
+            &copy; Caitlin Keefe | 2020 <a href='https://github.com/ckeefe90/Hoppy-Hunting-Client' title='GitHub Client repository'><FaGithub /></a>
         </footer>
     )
 }
