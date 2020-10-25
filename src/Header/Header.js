@@ -6,18 +6,13 @@ export default function Header(props) {
     const userContext = useContext(UserContext)
     const history = useHistory()
 
-    function handleLogOut() {
-        localStorage.removeItem('user')
-        userContext.setUser(null, () => history.push('/'))
-    }
-
     return (
         <header>
             <nav>
                 <NavLink to='/'>Hoppy Hunting</NavLink>
                 {userContext.user && <>
                     <NavLink to='/MyBreweries'>My Breweries</NavLink>
-                    <button onClick={handleLogOut}>Log Out</button>
+                    <button onClick={userContext.logOut}>Log Out</button>
                 </>}
                 {!userContext.user && <>
                     <button type='button' onClick={() => history.push("/SignUp")}>Sign Up</button>

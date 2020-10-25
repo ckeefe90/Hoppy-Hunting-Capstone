@@ -50,6 +50,11 @@ class App extends Component {
         })
   }
 
+  logOut = () => {
+    localStorage.removeItem('user')
+    this.setState({ breweries: [], user: null }, () => this.props.history.push('/'))
+  }
+
   signup = (user, cb) => {
     console.log('config.API_ENDPOINT', config.API_ENDPOINT)
     return fetch(config.API_ENDPOINT + "/signup", {
@@ -61,9 +66,13 @@ class App extends Component {
     })
       .then(res => {
         if (res.ok) {
-          this.setState({ user }, cb)
+          return res.json()
         } else
           throw new Error('Unable to create new account')
+      })
+      .then(token => {
+        localStorage.setItem('user', token)
+        this.setState({ user: token }, () => this.getBreweries().then(cb))
       })
   }
 
@@ -137,7 +146,7 @@ class App extends Component {
       .then(() => {
         this.setState({
           breweries: this.state.breweries.map(b =>
-            (b.id !== updatedBrewery.id) ? b : updatedBrewery)
+            (b.id !== id) ? b : { ...b, ...updatedBrewery })
         })
       })
   }
@@ -177,7 +186,8 @@ class App extends Component {
     const userContextValue = {
       user: this.state.user,
       setUser: this.login,
-      addUser: this.signup
+      addUser: this.signup,
+      logOut: this.logOut
     }
     const breweryContextValue = {
       breweries: this.state.breweries,
