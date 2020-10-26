@@ -17,6 +17,16 @@ export default function MyBreweries() {
         <>
             <img src={iLoveBeer} alt='I love beer' className='iLoveBeer' />
             <h2>My Brewtiful List</h2>
+
+            <p className='myBreweryInfo'>Save breweries that you want to try.
+                <br />
+            Come back and rate them after you try them.
+            <br />
+                <span className='deleteNotice'>
+                    Please delete wisely! Once it's deleted that cannot be undone.
+            </span>
+                <br />
+            You can always re-add the brewery at any time though.</p>
             <section id='myBreweries'>
                 {breweryContext.breweries.map(brewery =>
                     <Brewery

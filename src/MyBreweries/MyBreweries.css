@@ -12,3 +12,11 @@
 #addBrewery {
     margin: 1rem 0;
 }
+
+.deleteNotice {
+    font-weight: 700;
+}
+
+.myBreweryInfo {
+    text-align: center;
+}

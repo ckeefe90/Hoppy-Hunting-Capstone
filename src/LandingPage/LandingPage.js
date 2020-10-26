@@ -23,14 +23,17 @@ export default function LandingPage(props) {
                     <h3>Who doesn't love a good flight?</h3>
                 </div>
 
-                <p>Going on a trip and want to try some local breweries? Did too many results sound good? Save the breweries so you can keep track of the ones that you want to try.</p>
+                <p>Going on a trip and want to try some local breweries? Did too many results sound good?
+                    <br />
+                Save the breweries so you can keep track of the ones that you want to try.</p>
             </section>
             <section>
                 <img width='50%' src={flight} alt='flight' />
                 <div className='descBox'>
                     <h3>Come back and rate breweries that you've visited!</h3>
                 </div>
-                <p>Was the brewery better than expected or you want to track which ones you didn't like? Rate how your visit went by updating the comments and rating for that brewery.</p>
+                <p>Was the brewery better than expected or you want to track which ones you didn't like? <br />
+                Rate how your visit went by updating the comments and rating for that brewery.</p>
             </section>
             <section>
                 <img width='50%' src={topViewFlight} alt='top view flight' />
