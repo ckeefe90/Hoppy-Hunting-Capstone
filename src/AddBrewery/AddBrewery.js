@@ -13,7 +13,7 @@ export default function AddBrewery(props) {
         const newBrewery = {
             name: breweryName.value,
             address: breweryAddress.value,
-            comments: comments.value
+            comments: comments.value || ''
         }
         breweryContext.addBrewery(newBrewery, () => history.push('/MyBreweries'))
     }
@@ -34,7 +34,7 @@ export default function AddBrewery(props) {
                 </div>
                 <div>
                     <label htmlFor='comments'>Comments:</label>
-                    <textarea name='comments' id='comments' required />
+                    <textarea name='comments' id='comments' />
                 </div>
                 <button type='submit'>Add Brewery!</button>
             </form>

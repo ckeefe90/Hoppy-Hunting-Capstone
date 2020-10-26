@@ -3,6 +3,7 @@ import flight from '../Images/flight.jpg'
 import topViewFlight from '../Images/top-view-flight.jpg'
 import beerTaps from '../Images/beer-taps.jpg'
 import beerMug from '../Images/beer-mug.png'
+import { Link } from 'react-router-dom';
 
 export default function LandingPage(props) {
     return (
@@ -15,7 +16,7 @@ export default function LandingPage(props) {
                 <p>Sick of going to the same places? Want to try something new? Let us help you find the right brewery based off some search criteria you select. You can search by zip code or the type of beer that you're looking for.</p>
             </section> */}
 
-            <h2>Save &amp; rate breweries!</h2>
+            <h2>Save &amp; Rate Breweries!</h2>
             <section>
                 <img width='50%' src={beerTaps} alt='beer taps' />
                 <div className='descBox'>
@@ -34,7 +35,13 @@ export default function LandingPage(props) {
             <section>
                 <img width='50%' src={topViewFlight} alt='top view flight' />
                 <div className='welcomeBox'>
-                    <h3><img width='3%' src={beerMug} alt='beer mug' />Let's start hunting </h3>
+                    <h3>
+                        <Link to='/SignUp'>
+                            <img width='3%' src={beerMug} alt='beer mug' />
+                            <br />
+                            Let's start hunting
+                        </Link>
+                    </h3>
                 </div>
             </section>
         </>
