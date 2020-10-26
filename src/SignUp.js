@@ -20,7 +20,7 @@ export default function SignUp() {
             .catch(setError)
     }
     return (<>
-        <div className='SignUp__form'>
+        <div className='SignUp'>
             <form onSubmit={handleSubmit}>
                 <div>
 
@@ -28,21 +28,21 @@ export default function SignUp() {
                     {error && <h3>{error.message}</h3>}
                 </div>
                 <div>
-                    <label htmlFor='email'>Email</label>
+                    <label htmlFor='email'>Email:</label>
                     <input name='email' id='email' required />
                 </div>
                 <div>
-                    <label htmlFor='password'>Password</label>
+                    <label htmlFor='password'>Password:</label>
                     <input name='password' id='password' type='password' required />
                 </div>
                 <div>
-                    <label htmlFor='confirmPassword'>Confirm Password</label>
+                    <label htmlFor='confirmPassword'>Confirm Password:</label>
                     <input name='confirmPassword' id='confirmPassword' type='password' required />
                 </div>
                 <button type='submit'>Sign-up!</button>
                 <p>Already have an account? <Link to='/SignIn'>Sign in</Link></p>
             </form>
-            <img width='30%' src={brewery} alt='brewery' />
+            <img src={brewery} alt='brewery' />
         </div>
     </>)
 }

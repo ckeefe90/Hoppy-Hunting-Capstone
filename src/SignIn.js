@@ -19,7 +19,7 @@ export default function SignIn(props) {
     }
 
     return (<>
-        <div className='SignIn__form'>
+        <div className='SignIn'>
             <form onSubmit={handleSubmit}>
                 <div>
                     <h2>Please sign in:</h2>
@@ -30,11 +30,11 @@ export default function SignIn(props) {
                     </>}
                 </div>
                 <div>
-                    <label htmlFor='email'>Email</label>
+                    <label htmlFor='email'>Email:</label>
                     <input name='email' required />
                 </div>
                 <div>
-                    <label htmlFor='password'>Password</label>
+                    <label htmlFor='password'>Password:</label>
                     <input name='password' type='password' required />
                 </div>
                 <button type='submit'>Login</button>

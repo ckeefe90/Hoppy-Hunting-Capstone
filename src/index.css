@@ -38,3 +38,26 @@ footer {
     background-color: #888;
     text-align: center;
 }
+
+.SignUp label,
+.SignIn label {
+    display: block;
+    font-weight: 500;
+}
+
+.SignIn button,
+.SignUp button {
+    margin-top: 1rem;
+}
+
+.SignUp {
+    padding: 1rem;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.SignUp img {
+    width: 250px;
+}
