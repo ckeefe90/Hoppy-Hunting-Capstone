@@ -17,8 +17,8 @@ Users can delete the brewery.
 
 ### Testing
 
--Mocha
--Chai
+- Mocha
+- Chai
 
 ## Live App
 
