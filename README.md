@@ -30,7 +30,7 @@ https://github.com/ckeefe90/Hoppy-Hunting-Server
 
 ## App preview
 
-![](screenshots/hoppy-hunting-preview.JPG)
-![](screenshots/sign-up.JPG)
-![](screenshots/sign-in.JPG)
-![](screenshots/brewery-list.JPG)
+![](screenshots/HoppyHunting-Landing.png)
+![](screenshots/HoppyHunting-SignUp.png)
+![](screenshots/HoppyHunting-SignIn.png)
+![](screenshots/HoppyHunting-MyBreweries.png)

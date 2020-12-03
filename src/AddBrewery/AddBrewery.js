@@ -23,8 +23,9 @@ export default function AddBrewery(props) {
             <form onSubmit={handleSubmit}>
                 <div>
                     <h2>Add a brewery!</h2>
-                    <p>Was there something special about this brewery that you don't want to forget about?</p>
-                    <p>Save that in the comments section!</p>
+                    <p>Was there something special about this brewery that you don't want to forget about?
+                    <br />
+                    Save that in the comments section!</p>
                 </div>
                 <div>
                     <label htmlFor='breweryName'>Brewery Name:</label>
